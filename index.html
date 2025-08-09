@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadoras BR - Ferramentas úteis online gratuitas: Calculadora de IR 2025, Financiamento Imobiliário, Contador de Caracteres, Conversor de Medidas e Gerador de Senhas Seguras.">
+    <meta name="keywords" content="calculadora, imposto de renda, financiamento, contador caracteres, conversor medidas, gerador senhas, ferramentas online, calculadoras brasil">
+    <meta name="author" content="Calculadoras BR">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculadorasbr.github.io/ferramentas-uteis/">
+    <meta property="og:title" content="Calculadoras BR - Ferramentas Úteis Online Gratuitas">
+    <meta property="og:description" content="Acesse gratuitamente: Calculadora de IR 2025, Financiamento, Contador de Caracteres, Conversor de Medidas e Gerador de Senhas. Tudo em um só lugar!">
+    <meta property="og:image" content="https://calculadorasbr.github.io/ferramentas-uteis/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://calculadorasbr.github.io/ferramentas-uteis/">
+    <meta property="twitter:title" content="Calculadoras BR - Ferramentas Úteis Online">
+    <meta property="twitter:description" content="Ferramentas gratuitas: IR 2025, Financiamento, Contador de Caracteres e mais!">
+    <meta property="twitter:image" content="https://calculadorasbr.github.io/ferramentas-uteis/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculadorasbr.github.io/ferramentas-uteis/">
+    
+    <title>Calculadoras BR - Ferramentas Úteis Online Gratuitas | IR 2025, Financiamento, Conversores</title>
+    
+    <!-- Google Analytics (substitua GA_MEASUREMENT_ID pelo seu ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calculadoras BR",
+        "url": "https://calculadorasbr.github.io/ferramentas-uteis/",
+        "description": "Ferramentas úteis online gratuitas para cálculos, conversões e geradores diversos",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Calculadoras BR"
+        }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .header .highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .stats-bar {
+            background: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+            display: block;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 50px 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid #f1f3f4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--card-gradient, linear-gradient(90deg, #667eea, #764ba2));
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tool-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .tool-title {
+            color: #2c3e50;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tool-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .tool-features li {
+            color: #5a6c7d;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tool-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .tool-button {
+            background: linear-gradient(135deg, var(--btn-color1, #007bff), var(--btn-color2, #0056b3));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+        }
+
+        .tool-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+        }
+
+        /* Cores específicas para cada card */
+        .card-ir { --card-gradient: linear-gradient(90deg, #28a745, #20c997); --btn-color1: #28a745; --btn-color2: #1e7e34; }
+        .card-financiamento { --card-gradient: linear-gradient(90deg, #ffc107, #fd7e14); --btn-color1: #ffc107; --btn-color2: #e0a800; }
+        .card-contador { --card-gradient: linear-gradient(90deg, #6f42c1, #e83e8c); --btn-color1: #6f42c1; --btn-color2: #59359a; }
+        .card-conversor { --card-gradient: linear-gradient(90deg, #17a2b8, #138496); --btn-color1: #17a2b8; --btn-color2: #117a8b; }
+        .card-senhas { --card-gradient: linear-gradient(90deg, #dc3545, #c82333); --btn-color1: #dc3545; --btn-color2: #bd2130; }
+
+        .features-section {
+            background: #f8f9fa;
+            padding: 60px 30px;
+            margin: 0 -30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 60px -30px -50px -30px;
+        }
+
+        .cta-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #4facfe;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            color: #95a5a6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats-bar {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.5em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .loading {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        .loading:nth-child(2) { animation-delay: 0.2s; }
+        .loading:nth-child(3) { animation-delay: 0.3s; }
+        .loading:nth-child(4) { animation-delay: 0.4s; }
+        .loading:nth-child(5) { animation-delay: 0.5s; }
+        .loading:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>🧮 Calculadoras BR</h1>
+                <p class="subtitle">
+                    Suas ferramentas online favoritas em um só lugar! 
+                    <strong>100% gratuitas</strong> e otimizadas para mobile.
+                </p>
+                <div class="highlight">
+                    ✨ Mais de <strong>5 ferramentas</strong> prontas para usar agora!
+                </div>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Ferramentas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Gratuito</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">📱</span>
+                <span class="stat-label">Mobile Ready</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">⚡</span>
+                <span class="stat-label">Rápido</span>
+            </div>
+        </div>
+
+        <main class="content">
+            <h2 class="section-title">🛠️ Ferramentas Disponíveis</h2>
+            <p class="section-subtitle">
+                Escolha a ferramenta que precisa e comece a usar agora mesmo. 
+                Todas são responsivas e funcionam perfeitamente no seu celular!
+            </p>
+
+            <div class="tools-grid">
+                <div class="tool-card card-ir loading">
+                    <span class="tool-icon">💰</span>
+                    <h3 class="tool-title">Calculadora de IR 2025</h3>
+                    <p class="tool-description">
+                        Calcule seu Imposto de Renda com a tabela oficial atualizada para 2025.
+                    </p>
+                    <ul class="tool-features">
+                        <li>Tabela oficial 2025 atualizada</li>
+                        <li>Considera dependentes e previdência</li>
+                        <li>Mostra se vai receber ou pagar</li>
+                        <li>Cálculo em tempo real</li>
+                    </ul>
+                    <a href="calculadora-ir.html" class="tool-button">
+                        🚀 Calcular meu IR 2025
+                    </a>
+                </div>
+
+                <div class="tool-card card-financiamento loading">
+                    <span class="tool-icon">🏠</span>
+                    <h3 class="tool-title">Calculadora de Financiamento</h3>
+                    <p class="tool-description">
+                        Compare SAC vs Price e descubra qual sistema é melhor para você.
+                    </p>
+                    <ul class="tool-features">
+                        <li>Sistemas SAC e Price</li>
+                        <li>Comparação lado a lado</li>
+                        <li>Mostra economia real</li>
+                        <li>Alerta de comprometimento de renda</li>
+                    </ul>
+                    <a href="calculadora-financiamento.html" class="tool-button">
+                        🏡 Simular Financiamento
+                    </a>
+                </div>
+
+                <div class="tool-card card-contador loading">
+                    <span class="tool-icon">📝</span>
+                    <h3 class="tool-title">Contador de Caracteres</h3>
+                    <p class="tool-description">
+                        Conte caracteres, palavras, parágrafos e linhas do seu texto instantaneamente.
+                    </p>
+                    <ul class="tool-features">
+                        <li>Contagem em tempo real</li>
+                        <li>Caracteres com e sem espaços</li>
+                        <li>Palavras e parágrafos</li>
+                        <li>Estatísticas detalhadas</li>
+                    </ul>
+                    <a href="contador-caracteres.html" class="tool-button">
+                        ✍️ Contar Caracteres
+                    </a>
+                </div>
+
+                <div class="tool-card card-conversor loading">
+                    <span class="tool-icon">📏</span>
+                    <h3 class="tool-title">Conversor de Medidas</h3>
+                    <p class="tool-description">
+                        Converta comprimento, peso, temperatura, volume e área facilmente.
+                    </p>
+                    <ul class="tool-features">
+                        <li>5 tipos de conversão</li>
+                        <li>Mais de 25 unidades</li>
+                        <li>Conversão em tempo real</li>
+                        <li>Valores rápidos de referência</li>
+                    </ul>
+                    <a href="conversor-medidas.html" class="tool-button">
+                        🔄 Converter Medidas
+                    </a>
+                </div>
+
+                <div class="tool-card card-senhas loading">
+                    <span class="tool-icon">🔐</span>
+                    <h3 class="tool-title">Gerador de Senhas</h3>
+                    <p class="tool-description">
+                        Crie senhas seguras com análise de força e presets inteligentes.
+                    </p>
+                    <ul class="tool-features">
+                        <li>Presets de segurança</li>
+                        <li>Análise de força em tempo real</li>
+                        <li>Até 20 senhas por vez</li>
+                        <li>Copiar com um clique</li>
+                    </ul>
+                    <a href="gerador-senhas.html" class="tool-button">
+                        🔒 Gerar Senhas Seguras
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <section class="features-section">
+            <h2 class="section-title">⭐ Por que escolher nossas ferramentas?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">📱</span>
+                    <h3 class="feature-title">100% Responsivo</h3>
+                    <p class="feature-description">
+                        Funciona perfeitamente em qualquer dispositivo: celular, tablet ou computador.
+                    </p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">Super Rápido</h3>
+                    <p class="feature-description">
+                        Carregamento instantâneo e cálculos em tempo real. Sem travamentos ou delays.
+                    </p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">🔒</span>
+                    <h3 class="feature-title">Seguro e Privado</h3>
+                    <p class="feature-description">
+                        Seus dados não saem do seu dispositivo. Tudo é calculado localmente com segurança.
+                    </p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">🆓</span>
+                    <h3 class="feature-title">Totalmente Gratuito</h3>
+                    <p class="feature-description">
+                        Sem assinaturas, sem limites, sem pegadinhas. Use quantas vezes quiser, grátis!
+                    </p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <h3 class="feature-title">Fácil de Usar</h3>
+                    <p class="feature-description">
+                        Interface intuitiva e limpa. Qualquer pessoa consegue usar sem complicação.
+                    </p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">🔄</span>
+                    <h3 class="feature-title">Sempre Atualizado</h3>
+                    <p class="feature-description">
+                        Tabelas e dados sempre atualizados. IR 2025, taxas atuais e mais.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title">🚀 Comece a usar agora!</h2>
+            <p class="cta-description">
+                Todas as ferramentas estão prontas para usar. 
+                Escolha a que precisa e resolva seus cálculos em segundos!
+            </p>
+            <div class="cta-buttons">
+                <a href="calculadora-ir.html" class="cta-button">💰 Calcular IR 2025</a>
+                <a href="calculadora-financiamento.html" class="cta-button">🏠 Simular Financiamento</a>
+                <a href="#ferramentas" class="cta-button">🛠️ Ver Todas as Ferramentas</a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="calculadora-ir.html">Calculadora de IR</a>
+                    <a href="calculadora-financiamento.html">Financiamento</a>
+                    <a href="contador-caracteres.html">Contador de Caracteres</a>
+                    <a href="conversor-medidas.html">Conversor de Medidas</a>
+                    <a href="gerador-senhas.html">Gerador de Senhas</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Calculadoras BR - Ferramentas úteis online gratuitas</p>
+                    <p>Desenvolvido com ❤️ para facilitar sua vida digital</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Google Analytics Event Tracking
+        function trackToolClick(toolName) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'tool_click', {
+                    'tool_name': toolName,
+                    'event_category': 'engagement'
+                });
+            }
+        }
+
+        // Add click tracking to tool buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const toolButtons = document.querySelectorAll('.tool-button');
+            toolButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const toolCard = e.target.closest('.tool-card');
+                    const toolTitle = toolCard.querySelector('.tool-title').textContent;
+                    trackToolClick(toolTitle);
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add loading animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all tool cards
+            document.querySelectorAll('.tool-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        // Performance optimization: Preload critical pages
+        const criticalPages = [
+            'calculadora-ir.html',
+            'calculadora-financiamento.html',
+            'contador-caracteres.html'
+        ];
+
+        criticalPages.forEach(page => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = page;
+            document.head.appendChild(link);
+        });
+    </script>
+</body>
+</html>

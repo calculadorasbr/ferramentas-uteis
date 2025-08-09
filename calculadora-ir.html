@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Imposto de Renda 2025 - Grátis | Ferramentas Úteis</title>
+    <meta name="description" content="Calcule seu imposto de renda 2025 de forma gratuita. Descubra se você vai receber restituição ou pagar imposto adicional.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .input-section, .result-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-title {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .result-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .result-positive {
+            color: #28a745;
+        }
+
+        .result-negative {
+            color: #dc3545;
+        }
+
+        .tax-table {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .tax-table h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .highlight-row {
+            background: #e3f2fd;
+            font-weight: bold;
+        }
+
+        .related-tools {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-tools h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .related-item {
+            text-decoration: none;
+            color: inherit;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .related-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .related-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .related-desc {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h4 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #0c5460;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="index.html" class="nav-link">← Voltar ao Hub</a>
+        </div>
+
+        <header>
+            <h1>💰 Calculadora de Imposto de Renda 2025</h1>
+            <p class="subtitle">Calcule seu IR e descubra se você vai receber restituição</p>
+        </header>
+
+        <div class="calculator-container">
+            <div class="input-section">
+                <h3>📊 Dados para Cálculo</h3>
+                
+                <div class="form-group">
+                    <label for="salario">Salário Bruto Mensal (R$)</label>
+                    <input type="number" id="salario" placeholder="Ex: 5000" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="dependentes">Número de Dependentes</label>
+                    <input type="number" id="dependentes" placeholder="Ex: 2" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="previdencia">Contribuição Previdenciária Mensal (R$)</label>
+                    <input type="number" id="previdencia" placeholder="Ex: 550" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="irRetido">IR Retido na Fonte Mensal (R$)</label>
+                    <input type="number" id="irRetido" placeholder="Ex: 425" step="0.01">
+                </div>
+
+                <button class="btn" onclick="calcularIR()">Calcular Imposto de Renda</button>
+            </div>
+
+            <div class="result-section">
+                <h3>📈 Resultado do Cálculo</h3>
+                
+                <div class="result-card">
+                    <div class="result-title">Salário Bruto Anual</div>
+                    <div class="result-value" id="salarioAnual">R$ 0,00</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-title">Base de Cálculo</div>
+                    <div class="result-value" id="baseCalculo">R$ 0,00</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-title">Imposto Devido</div>
+                    <div class="result-value" id="impostoDevido">R$ 0,00</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-title">Imposto Retido Anual</div>
+                    <div class="result-value" id="impostoRetido">R$ 0,00</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-title">Situação Final</div>
+                    <div class="result-value" id="situacaoFinal">Preencha os dados</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tax-table">
+            <h3>📋 Tabela do Imposto de Renda 2025</h3>
+            
+            <div class="info-box">
+                <h4>ℹ️ Informações Importantes</h4>
+                <p><strong>Dedução por dependente:</strong> R$ 2.275,08 por ano</p>
+                <p><strong>Desconto simplificado:</strong> 20% da renda bruta, limitado a R$ 16.754,34</p>
+                <p><strong>Isenção:</strong> Renda anual até R$ 30.639,90</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Base de Cálculo Anual</th>
+                        <th>Alíquota</th>
+                        <th>Parcela a Deduzir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Até R$ 30.639,90</td>
+                        <td>Isento</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>De R$ 30.639,91 a R$ 45.012,60</td>
+                        <td>7,5%</td>
+                        <td>R$ 2.297,99</td>
+                    </tr>
+                    <tr>
+                        <td>De R$ 45.012,61 a R$ 55.976,16</td>
+                        <td>15%</td>
+                        <td>R$ 5.672,94</td>
+                    </tr>
+                    <tr>
+                        <td>De R$ 55.976,17 a R$ 70.710,12</td>
+                        <td>22,5%</td>
+                        <td>R$ 9.872,94</td>
+                    </tr>
+                    <tr>
+                        <td>Acima de R$ 70.710,12</td>
+                        <td>27,5%</td>
+                        <td>R$ 13.408,44</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="related-tools">
+            <h3>🔗 Ferramentas Relacionadas</h3>
+            <div class="related-grid">
+                <a href="calculadora-financiamento.html" class="related-item">
+                    <div class="related-title">🏠 Calculadora de Financiamento</div>
+                    <div class="related-desc">Simule financiamentos imobiliários</div>
+                </a>
+                <a href="contador-caracteres.html" class="related-item">
+                    <div class="related-title">📝 Contador de Caracteres</div>
+                    <div class="related-desc">Conte palavras e caracteres</div>
+                </a>
+                <a href="index.html" class="related-item">
+                    <div class="related-title">🛠️ Mais Ferramentas</div>
+                    <div class="related-desc">Ver todas as ferramentas</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calcularIR() {
+            // Obter valores do formulário
+            const salarioMensal = parseFloat(document.getElementById('salario').value) || 0;
+            const dependentes = parseInt(document.getElementById('dependentes').value) || 0;
+            const previdenciaMensal = parseFloat(document.getElementById('previdencia').value) || 0;
+            const irRetidoMensal = parseFloat(document.getElementById('irRetido').value) || 0;
+
+            // Calcular valores anuais
+            const salarioAnual = salarioMensal * 12;
+            const previdenciaAnual = previdenciaMensal * 12;
+            const irRetidoAnual = irRetidoMensal * 12;
+
+            // Dedução por dependentes
+            const deducaoDependentes = dependentes * 2275.08;
+
+            // Base de cálculo (usando desconto simplificado de 20%)
+            const descontoSimplificado = Math.min(salarioAnual * 0.20, 16754.34);
+            const baseCalculo = salarioAnual - previdenciaAnual - deducaoDependentes - descontoSimplificado;
+
+            // Calcular imposto devido
+            let impostoDevido = 0;
+            if (baseCalculo > 70710.12) {
+                impostoDevido = (baseCalculo * 0.275) - 13408.44;
+            } else if (baseCalculo > 55976.16) {
+                impostoDevido = (baseCalculo * 0.225) - 9872.94;
+            } else if (baseCalculo > 45012.60) {
+                impostoDevido = (baseCalculo * 0.15) - 5672.94;
+            } else if (baseCalculo > 30639.90) {
+                impostoDevido = (baseCalculo * 0.075) - 2297.99;
+            } else {
+                impostoDevido = 0;
+            }
+
+            // Garantir que o imposto não seja negativo
+            impostoDevido = Math.max(0, impostoDevido);
+
+            // Situação final
+            const diferenca = irRetidoAnual - impostoDevido;
+            let situacao = '';
+            let situacaoClass = '';
+
+            if (diferenca > 0) {
+                situacao = `Restituição: R$ ${diferenca.toFixed(2).replace('.', ',')}`;
+                situacaoClass = 'result-positive';
+            } else if (diferenca < 0) {
+                situacao = `A pagar: R$ ${Math.abs(diferenca).toFixed(2).replace('.', ',')}`;
+                situacaoClass = 'result-negative';
+            } else {
+                situacao = 'Imposto em dia';
+                situacaoClass = '';
+            }
+
+            // Atualizar resultados na tela
+            document.getElementById('salarioAnual').textContent = `R$ ${salarioAnual.toFixed(2).replace('.', ',')}`;
+            document.getElementById('baseCalculo').textContent = `R$ ${baseCalculo.toFixed(2).replace('.', ',')}`;
+            document.getElementById('impostoDevido').textContent = `R$ ${impostoDevido.toFixed(2).replace('.', ',')}`;
+            document.getElementById('impostoRetido').textContent = `R$ ${irRetidoAnual.toFixed(2).replace('.', ',')}`;
+            
+            const situacaoElement = document.getElementById('situacaoFinal');
+            situacaoElement.textContent = situacao;
+            situacaoElement.className = `result-value ${situacaoClass}`;
+        }
+
+        // Calcular automaticamente quando os campos mudarem
+        document.getElementById('salario').addEventListener('input', calcularIR);
+        document.getElementById('dependentes').addEventListener('input', calcularIR);
+        document.getElementById('previdencia').addEventListener('input', calcularIR);
+        document.getElementById('irRetido').addEventListener('input', calcularIR);
+
+        // Focar no primeiro campo quando carregar
+        window.addEventListener('load', () => {
+            document.getElementById('salario').focus();
+        });
+    </script>
+</body>
+</html>

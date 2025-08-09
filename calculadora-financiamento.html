@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Financiamento Imobiliário 2025 - SAC e Price | Ferramentas Úteis</title>
+    <meta name="description" content="Simule financiamentos imobiliários com sistemas SAC e Price. Calcule parcelas, juros e valor total do seu financiamento gratuitamente.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .input-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-section {
+            display: grid;
+            gap: 20px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-weight: bold;
+        }
+
+        .input-prefix + input {
+            padding-left: 35px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+        }
+
+        .system-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-button:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tab-button.active:hover {
+            background: #5a6fd8;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .result-subtitle {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .result-value {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .highlight-value {
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .comparison-table h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .sac-highlight {
+            background: #e8f5e8;
+            font-weight: bold;
+        }
+
+        .price-highlight {
+            background: #fff3e0;
+            font-weight: bold;
+        }
+
+        .info-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box ul {
+            color: #6c757d;
+            padding-left: 20px;
+        }
+
+        .info-box li {
+            margin-bottom: 5px;
+        }
+
+        .related-tools {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-tools h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .related-item {
+            text-decoration: none;
+            color: inherit;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .related-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .related-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .related-desc {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .info-boxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .system-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="index.html" class="nav-link">← Voltar ao Hub</a>
+        </div>
+
+        <header>
+            <h1>🏠 Calculadora de Financiamento Imobiliário</h1>
+            <p class="subtitle">Simule seu financiamento com os sistemas SAC e Price</p>
+        </header>
+
+        <div class="calculator-grid">
+            <div class="input-section">
+                <h3>📊 Dados do Financiamento</h3>
+                
+                <div class="form-group">
+                    <label for="valorImovel">Valor do Imóvel (R$)</label>
+                    <div class="input-group">
+                        <span class="input-prefix">R$</span>
+                        <input type="number" id="valorImovel" placeholder="500000" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="entrada">Valor da Entrada (R$)</label>
+                    <div class="input-group">
+                        <span class="input-prefix">R$</span>
+                        <input type="number" id="entrada" placeholder="100000" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="prazo">Prazo do Financiamento</label>
+                    <select id="prazo">
+                        <option value="120">10 anos (120 meses)</option>
+                        <option value="180">15 anos (180 meses)</option>
+                        <option value="240">20 anos (240 meses)</option>
+                        <option value="300">25 anos (300 meses)</option>
+                        <option value="360" selected>30 anos (360 meses)</option>
+                        <option value="420">35 anos (420 meses)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="juros">Taxa de Juros Anual (%)</label>
+                    <div class="input-group">
+                        <input type="number" id="juros" placeholder="10.5" step="0.01" min="0" max="30">
+                        <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #666;">%</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="renda">Sua Renda Mensal (R$)</label>
+                    <div class="input-group">
+                        <span class="input-prefix">R$</span>
+                        <input type="number" id="renda" placeholder="8000" step="0.01">
+                    </div>
+                </div>
+
+                <button class="btn" onclick="calcularFinanciamento()">Calcular Financiamento</button>
+            </div>
+
+            <div class="results-section">
+                <div class="result-card">
+                    <div class="system-tabs">
+                        <button class="tab-button active" id="tabSAC" onclick="showSystem('SAC')">Sistema SAC</button>
+                        <button class="tab-button" id="tabPrice" onclick="showSystem('Price')">Sistema Price</button>
+                    </div>
+                    
+                    <div id="resultsSAC" class="system-results">
+                        <div class="result-header">
+                            <div class="result-title">🔢 Sistema SAC</div>
+                            <div class="result-subtitle">Parcelas decrescentes</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Valor Financiado</span>
+                            <span class="result-value" id="sacFinanciado">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">1ª Parcela</span>
+                            <span class="result-value highlight-value" id="sacPrimeira">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Última Parcela</span>
+                            <span class="result-value" id="sacUltima">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Total de Juros</span>
+                            <span class="result-value" id="sacJuros">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Valor Total</span>
+                            <span class="result-value highlight-value" id="sacTotal">R$ 0,00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-label">% da Renda (1ª parcela)</span>
+                            <span class="result-value" id="sacRenda">0%</span>
+                        </div>
+                    </div>
+
+                    <div id="resultsPrice" class="system-results" style="display: none;">
+                        <div class="result-header">
+                            <div class="result-title">💰 Sistema Price</div>
+                            <div class="result-subtitle">Parcelas fixas</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Valor Financiado</span>
+                            <span class="result-value" id="priceFinanciado">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Parcela Mensal</span>
+                            <span class="result-value highlight-value" id="priceParcela">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Total de Juros</span>
+                            <span class="result-value" id="priceJuros">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Valor Total</span>
+                            <span class="result-value highlight-value" id="priceTotal">R$ 0,00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-label">% da Renda</span>
+                            <span class="result-value" id="priceRenda">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-table" id="comparisonTable" style="display: none;">
+            <h3>⚖️ Comparação dos Sistemas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sistema</th>
+                        <th>1ª Parcela</th>
+                        <th>Última Parcela</th>
+                        <th>Total de Juros</th>
+                        <th>Valor Total</th>
+                        <th>Economia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="sac-highlight">
+                        <td><strong>SAC</strong></td>
+                        <td id="compSacPrimeira">-</td>
+                        <td id="compSacUltima">-</td>
+                        <td id="compSacJuros">-</td>
+                        <td id="compSacTotal">-</td>
+                        <td id="compSacEconomia">-</td>
+                    </tr>
+                    <tr class="price-highlight">
+                        <td><strong>Price</strong></td>
+                        <td id="compPriceParcela">-</td>
+                        <td id="compPriceParcela2">-</td>
+                        <td id="compPriceJuros">-</td>
+                        <td id="compPriceTotal">-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-boxes">
+            <div class="info-box">
+                <h4>📈 Sistema SAC</h4>
+                <ul>
+                    <li>Parcelas começam maiores e diminuem com o tempo</li>
+                    <li>Amortização constante do capital</li>
+                    <li>Juros incidem sobre o saldo devedor</li>
+                    <li>Total de juros menor que o Price</li>
+                    <li>Ideal para quem tem renda estável alta</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h4>💳 Sistema Price</h4>
+                <ul>
+                    <li>Parcelas fixas durante todo o período</li>
+                    <li>Maior facilidade de planejamento</li>
+                    <li>No início paga-se mais juros</li>
+                    <li>Total de juros maior que o SAC</li>
+                    <li>Ideal para quem prefere previsibilidade</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="related-tools">
+            <h3>🔗 Ferramentas Relacionadas</h3>
+            <div class="related-grid">
+                <a href="calculadora-ir.html" class="related-item">
+                    <div class="related-title">💰 Calculadora de IR</div>
+                    <div class="related-desc">Calcule seu imposto de renda</div>
+                </a>
+                <a href="contador-caracteres.html" class="related-item">
+                    <div class="related-title">📝 Contador de Caracteres</div>
+                    <div class="related-desc">Conte palavras e caracteres</div>
+                </a>
+                <a href="index.html" class="related-item">
+                    <div class="related-title">🛠️ Mais Ferramentas</div>
+                    <div class="related-desc">Ver todas as ferramentas</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSystem = 'SAC';
+
+        function showSystem(system) {
+            currentSystem = system;
+            
+            // Atualizar tabs
+            document.getElementById('tabSAC').classList.remove('active');
+            document.getElementById('tabPrice').classList.remove('active');
+            document.getElementById('tab' + system).classList.add('active');
+            
+            // Mostrar/ocultar resultados
+            document.getElementById('resultsSAC').style.display = system === 'SAC' ? 'block' : 'none';
+            document.getElementById('resultsPrice').style.display = system === 'Price' ? 'block' : 'none';
+        }
+
+        function formatMoney(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        }
+
+        function calcularFinanciamento() {
+            // Obter valores
+            const valorImovel = parseFloat(document.getElementById('valorImovel').value) || 0;
+            const entrada = parseFloat(document.getElementById('entrada').value) || 0;
+            const prazoMeses = parseInt(document.getElementById('prazo').value);
+            const jurosPorcentoAnual = parseFloat(document.getElementById('juros').value) || 0;
+            const renda = parseFloat(document.getElementById('renda').value) || 0;
+
+            if (valorImovel <= 0 || prazoMeses <= 0 || jurosPorcentoAnual <= 0) {
+                alert('Por favor, preencha todos os campos corretamente.');
+                return;
+            }
+
+            // Cálculos básicos
+            const valorFinanciado = valorImovel - entrada;
+            const jurosMensal = jurosPorcentoAnual / 100 / 12;
+
+            if (valorFinanciado <= 0) {
+                alert('O valor da entrada não pode ser maior ou igual ao valor do imóvel.');
+                return;
+            }
+
+            // Cálculo SAC
+            const amortizacaoSAC = valorFinanciado / prazoMeses;
+            let saldoDevedorSAC = valorFinanciado;
+            let totalJurosSAC = 0;
+            let primeiraParcela = 0;
+            let ultimaParcela = 0;
+
+            for (let i = 1; i <= prazoMeses; i++) {
+                const jurosDoMes = saldoDevedorSAC * jurosMensal;
+                const parcela = amortizacaoSAC + jurosDoMes;
+                
+                if (i === 1) primeiraParcela = parcela;
+                if (i === prazoMeses) ultimaParcela = parcela;
+                
+                totalJurosSAC += jurosDoMes;
+                saldoDevedorSAC -= amortizacaoSAC;
+            }
+
+            const totalSAC = valorFinanciado + totalJurosSAC;
+
+            // Cálculo Price
+            const parcelaPrice = valorFinanciado * (jurosMensal * Math.pow(1 + jurosMensal, prazoMeses)) / (Math.pow(1 + jurosMensal, prazoMeses) - 1);
+            const totalPrice = parcelaPrice * prazoMeses;
+            const totalJurosPrice = totalPrice - valorFinanciado;
+
+            // Atualizar resultados SAC
+            document.getElementById('sacFinanciado').textContent = formatMoney(valorFinanciado);
+            document.getElementById('sacPrimeira').textContent = formatMoney(primeiraParcela);
+            document.getElementById('sacUltima').textContent = formatMoney(ultimaParcela);
+            document.getElementById('sacJuros').textContent = formatMoney(totalJurosSAC);
+            document.getElementById('sacTotal').textContent = formatMoney(totalSAC);
+            
+            if (renda > 0) {
+                const percentSAC = (primeiraParcela / renda * 100).toFixed(1);
+                document.getElementById('sacRenda').textContent = percentSAC + '%';
+                document.getElementById('sacRenda').style.color = percentSAC > 30 ? '#dc3545' : '#28a745';
+            }
+
+            // Atualizar resultados Price
+            document.getElementById('priceFinanciado').textContent = formatMoney(valorFinanciado);
+            document.getElementById('priceParcela').textContent = formatMoney(parcelaPrice);
+            document.getElementById('priceJuros').textContent = formatMoney(totalJurosPrice);
+            document.getElementById('priceTotal').textContent = formatMoney(totalPrice);
+            
+            if (renda > 0) {
+                const percentPrice = (parcelaPrice / renda * 100).toFixed(1);
+                document.getElementById('priceRenda').textContent = percentPrice + '%';
+                document.getElementById('priceRenda').style.color = percentPrice > 30 ? '#dc3545' : '#28a745';
+            }
+
+            // Atualizar tabela comparativa
+            document.getElementById('compSacPrimeira').textContent = formatMoney(primeiraParcela);
+            document.getElementById('compSacUltima').textContent = formatMoney(ultimaParcela);
+            document.getElementById('compSacJuros').textContent = formatMoney(totalJurosSAC);
+            document.getElementById('compSacTotal').textContent = formatMoney(totalSAC);
+            
+            const economia = totalJurosPrice - totalJurosSAC;
+            document.getElementById('compSacEconomia').textContent = formatMoney(economia);
+            document.getElementById('compSacEconomia').style.color = '#28a745';
+
+            document.getElementById('compPriceParcela').textContent = formatMoney(parcelaPrice);
+            document.getElementById('compPriceParcela2').textContent = formatMoney(parcelaPrice);
+            document.getElementById('compPriceJuros').textContent = formatMoney(totalJurosPrice);
+            document.getElementById('compPriceTotal').textContent = formatMoney(totalPrice);
+
+            // Mostrar tabela comparativa
+            document.getElementById('comparisonTable').style.display = 'block';
+        }
+
+        // Auto-calcular quando mudar entrada baseado no valor do imóvel
+        document.getElementById('valorImovel').addEventListener('input', function() {
+            const valorImovel = parseFloat(this.value) || 0;
+            const entradaSugerida = valorImovel * 0.2; // 20% do valor
+            if (valorImovel > 0) {
+                document.getElementById('entrada').placeholder = entradaSugerida.toFixed(0);
+            }
+        });
+
+        // Calcular automaticamente quando campos importantes mudarem
+        ['valorImovel', 'entrada', 'prazo', 'juros', 'renda'].forEach(id => {
+            document.getElementById(id).addEventListener('change', () => {
+                if (document.getElementById('valorImovel').value && 
+                    document.getElementById('entrada').value && 
+                    document.getElementById('juros').value) {
+                    calcularFinanciamento();
+                }
+            });
+        });
+
+        // Focar no primeiro campo
+        window.addEventListener('load', () => {
+            document.getElementById('valorImovel').focus();
+        });
+    </script>
+</body>
+</html>
